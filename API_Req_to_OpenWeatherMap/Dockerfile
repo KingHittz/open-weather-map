@@ -1,8 +1,12 @@
-FROM python:3.12
-LABEL authors="justin"
+FROM python:latest
 
-ADD docker/main.py .
+WORKDIR /app.py
 
-RUN pip install scikit-learn
+COPY  . /requirements.txt .
 
-CMD ['python', './main.py']
+RUN pip install -r requirements.txt
+
+COPY . /Req_to_OpenWeatherMap.py /Users/Justin/PycharmProjects/API_Req_to_OpenWeatherMap
+
+
+CMD ["python3", "./Req_to_OpenWeatherMap.py"]
