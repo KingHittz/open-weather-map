@@ -1,12 +1,11 @@
 FROM python:latest
 
-WORKDIR /app.py
+WORKDIR /app
 
-COPY  . /requirements.txt .
+COPY  ./requirements.txt /app
 
 RUN pip install -r requirements.txt
 
-COPY . /Req_to_OpenWeatherMap.py /Users/Justin/PycharmProjects/API_Req_to_OpenWeatherMap
+COPY ./main.py /app
 
-
-CMD ["python3", "./Req_to_OpenWeatherMap.py"]
+CMD ["python3", "./main.py"]
