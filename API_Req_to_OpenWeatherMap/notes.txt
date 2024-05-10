@@ -63,5 +63,7 @@ CMD's FOR GIT
 - git log, git log --oneline (SHOWS ALL COMMITS)
 
 
+CMD's for LINUX
 
+- cd .. = to go back one dir
 
