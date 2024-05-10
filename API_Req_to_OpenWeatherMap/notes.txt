@@ -1,0 +1,67 @@
+
+
+NOTES
+
+learn the dif between absolute file path and relative file path
+
+make dir in docker 
+
+image and container cmds learn the dif 
+
+insatlling in ngix 
+
+expose 8080:
+
+take default webpage and use mine
+
+github training
+
+Vimtutor 
+
+python image with working code on main branch
+
+
+CMD's FOR DOCKER
+
+- docker run -p "8080:80" "nginx:stable-perl"
+
+- crtl c = to stop running the image
+
+- docker ps -a = shows containers that have been created
+
+- docker ps = shows containers that are running
+
+- docker rm "contianer ID" = removes specified container from containers that have been created
+
+- docker run -d -p "8080:80" -v "file path":"file path" --name "" "nginx:stable-perl"
+
+- docker stop "container ID" = stops a container
+
+- docker build --tag myimage . (in the dir that has the docker file)
+
+- docker run -it --entrypoint bash --user root myimage
+
+- docker exec -it "contianer ID" bash = this is used to get into the root of the container 
+
+
+CMD's FOR GIT
+
+- git status
+
+- git commit -a -m "your note"
+
+- git restore --staged
+
+- git add, git add -A (ALL) 
+
+- git diff
+
+- git init
+
+- git mv "OLD NAME" "NEW NAME"
+
+- git log, git log --oneline (SHOWS ALL COMMITS)
+
+
+
+
