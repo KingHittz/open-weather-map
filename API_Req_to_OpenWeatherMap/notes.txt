@@ -41,6 +41,7 @@ CMD's FOR DOCKER
 
 - docker exec -it "contianer ID" bash = this is used to get into the root of the container 
 
+- docker rename my_container my_new_container = rename a container
 
 CMD's FOR GIT
 -------------
