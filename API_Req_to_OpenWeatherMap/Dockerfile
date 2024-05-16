@@ -14,4 +14,6 @@ RUN pip install -r requirements.txt
 
 COPY ./main.py /app
 
+EXPOSE 8080:80
+
 CMD ["python3", "./main.py"]
