@@ -1,3 +1,0 @@
-flow:
-  default:
-    shell: echo "hello world"

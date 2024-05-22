@@ -1,0 +1,45 @@
+repos:
+-   repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+    -   id: check-ast
+    -   id: check-yaml
+    -   id: check-json
+    -   id: pretty-format-json
+        args:
+            - "--autofix"
+    -   id: name-tests-test
+    -   id: debug-statements
+    -   id: forbid-submodules
+    -   id: end-of-file-fixer
+    -   id: no-commit-to-branch
+    -   id: trailing-whitespace
+    -   id: check-case-conflict
+    -   id: check-builtin-literals
+-   repo: https://github.com/psf/black
+    rev: 24.4.2
+    hooks:
+    -   id: black
+-   repo: local
+    hooks:
+      - id: pytest
+        name: run pytest
+        entry: python -m pytest
+        language: system
+        pass_filenames: false
+-   repo: local
+    hooks:
+      - id: pylint
+        name: run pylint
+        entry: python -m pylint
+        language: system
+        pass_filenames: false
+        args: ["**/*.py", "--fail-under", "8"]
+-   repo: local
+    hooks:
+      - id: dockerbuild
+        name: run docker build
+        entry: docker build .
+        language: system
+        pass_filenames: false
+
