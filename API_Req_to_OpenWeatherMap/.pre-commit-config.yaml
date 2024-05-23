@@ -37,3 +37,10 @@ repos:
         language: system
         pass_filenames: false
         args: ["**/*.py", "--fail-under", "8"]
+-   repo: local
+    hooks:
+      - id: dockerbuild
+        name: run docker build
+        entry: docker build . --file Dockerfile
+        language: system
+        pass_filenames: false
