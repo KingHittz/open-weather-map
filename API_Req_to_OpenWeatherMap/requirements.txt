@@ -3,8 +3,3 @@ charset-normalizer==3.3.2
 idna==3.7
 requests==2.31.0
 urllib3==2.2.1
-<<<<<<< HEAD
-pylint
-=======
-pre-commit
->>>>>>> bc3fbe582de9724ed5e96ed605cb4df955b8cb12
