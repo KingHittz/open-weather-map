@@ -22,8 +22,9 @@ class WeatherData:
         """This method is designed to retrieve weather data for the city
         and state stored in the object"""
         url = f"{self.base_url}appid={self.api_key}&q={self.city}"
-        response = requests.get(url, timeout=10).json()
-        return self.pull_data(response)
+        response = requests.get(url, timeout=10)
+        response.raise_for_status()
+        return self.pull_data(response.json())
 
     def pull_data(self, data):
         """This method exacts specific weather data from the provided JSON data"""
@@ -54,9 +55,9 @@ class WeatherData:
 
 def main():
     """This function runs the program"""
-    api_key = "INSERT_API"  # Replace with your actual API key
-    city = "INSERT_CITY"
-    state = "INSERT_STATE"
+    api_key = "b9f3269290ef5f9e7de33a3db53afbf6"  # Replace with your actual API key
+    city = "Manchester"
+    state = "Tennessee"
     weather = WeatherData(api_key, city, state)
     data = weather.get_weather()
     print(f'Sun rises in {city}, {state} at {data["sunrise_time"]}) local time.')
