@@ -58,6 +58,6 @@ def test_convert_mph_to_kph():
 
 
 def test_degrees_to_cardinal():
-    output = degrees_to_cardinal(15)
-    answer = NNE
+    output = degrees_to_cardinal(89)
+    answer = "E"
     assert output == answer
