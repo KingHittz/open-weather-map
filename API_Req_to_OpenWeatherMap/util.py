@@ -1,7 +1,5 @@
 """unused utilities will be stored here"""
 
-import data
-
 
 def convert_kelvin_to_celsius_fahrenheit(kelvin):
     """This function is designed to convert a
@@ -53,3 +51,28 @@ def convert_mph_to_kph(value):
     """converts mph to kph"""
     kph = value / 0.277778
     return kph
+
+
+def degrees_to_cardinal(d):
+    """converts degrees
+    to cardinal direction"""
+    dirs = [
+        "N",
+        "NNE",
+        "NE",
+        "ENE",
+        "E",
+        "ESE",
+        "SE",
+        "SSE",
+        "S",
+        "SSW",
+        "SW",
+        "WSW",
+        "W",
+        "WNW",
+        "NW",
+        "NNW",
+    ]
+    ix = int((d + 11.25) / 22.5)
+    return dirs[ix % 16]

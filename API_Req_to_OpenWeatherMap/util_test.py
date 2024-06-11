@@ -12,6 +12,8 @@ from util import convert_kPa_to_mmhg
 
 from util import convert_mph_to_kph
 
+from util import degrees_to_cardinal
+
 
 def test_convert_kelvin_to_celsius_fahrenheit():
     output = convert_kelvin_to_celsius_fahrenheit(100)
@@ -52,4 +54,10 @@ def test_convert_kPa_to_mmhg():
 def test_convert_mph_to_kph():
     output = convert_mph_to_kph(100)
     answer = 359.9997120002304
+    assert output == answer
+
+
+def test_degrees_to_cardinal():
+    output = degrees_to_cardinal(15)
+    answer = NNE
     assert output == answer
