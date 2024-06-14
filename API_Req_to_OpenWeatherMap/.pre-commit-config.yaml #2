@@ -1,0 +1,38 @@
+repos:
+-   repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+    - id: check-yaml
+    - id: trailing-whitespaces
+    - id: no-commit-to-branch
+    - id: check-case-conflict
+    - id: flake8
+    - id: bandit
+    - id: pylint
+    - id: check-ast
+    - id: check-yaml
+      args: [--allow-multiple-documents]
+        exclude: ^deploy/hows-the-weather/templates/
+    -   id: check-json
+    -   id: pretty-format-json
+         args:
+            - "--autofix"
+    -   id: name-tests-test
+    -   id: debug-statements
+    -   id: forbid-submodules
+    -   id: end-of-file-fixer
+    -   id: no-commit-to-branch
+    -   id: trailing-whitespace
+    -   id: check-case-conflict
+    -   id: check-builtin-literals
+- repo: https://github.com/psf/black
+  rev: 24.4.2
+  hooks:
+    -   id: black
+- repo: local
+  hooks:
+    - id: test_weather_data
+    name: run pylint
+    entry: python -m pylint
+    language: python
+    types: [python]
