@@ -39,9 +39,9 @@ class WeatherData:
         return celsius, fahrenheit
 
 def main():
-    api_key = 'INSERT_API'  # Replace with your actual API key
-    city = 'INSERT_CITY'
-    state = 'INSERT_STATE'
+    api_key = 'b9f3269290ef5f9e7de33a3db53afbf6'  # Replace with your actual API key
+    city = 'Manchester'
+    state = 'Tennessee'
 
     weather = WeatherData(api_key, city, state)
     data = weather.get_weather()
