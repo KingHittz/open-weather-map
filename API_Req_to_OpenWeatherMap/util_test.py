@@ -14,6 +14,7 @@ from util import convert_mph_to_kph
 
 from util import degrees_to_cardinal
 
+from util import utc_to_cst
 
 def test_convert_kelvin_to_celsius_fahrenheit():
     output = convert_kelvin_to_celsius_fahrenheit(100)
@@ -58,6 +59,13 @@ def test_convert_mph_to_kph():
 
 
 def test_degrees_to_cardinal():
-    output = degrees_to_cardinal(180)
-    answer = "E"
+    output = degrees_to_cardinal(60.25)
+    answer = "NE"
     assert output == answer
+
+def test_utc_to_cst():
+    output = utc_to_cst()
+    answer =
+    assert output == answer
+
+

@@ -56,25 +56,32 @@ def convert_mph_to_kph(value):
 def degrees_to_cardinal(degrees):
     """Converts degrees to cardinal direction"""
 
-    if degrees >= 0 or degrees < 360:
+    if degrees <= 0:
         return "N"
-
-    elif degrees < 90:
+    elif 30 <= degrees <= 61:
+        return "NE"
+    elif 61 < degrees <= 120:
         return "E"
-
-    elif degrees < 180:
+    elif 151 <= degrees <= 210:
         return "S"
-
-    elif degrees < 270:
+    elif 120 < degrees <= 150:
+        return "SE"
+    elif 241 < degrees <= 300:
         return "W"
-
+    elif 210 <= degrees <= 241:
+        return "SW"
+    elif 300 <= degrees <= 330:
+        return "NW"
     return degrees
 
+from datetime import datetime
 
+from dateutil import tz
 
+def utc_to_cst(utc_datetime):
 
+    cst_timezone = tz.gettz('US/Central')
 
+    cst_datetime = utc_datetime.astimezone(cst_timezone)
 
-
-
-
+    return cst_datetime
