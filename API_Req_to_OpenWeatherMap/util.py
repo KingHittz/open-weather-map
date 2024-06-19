@@ -74,14 +74,16 @@ def degrees_to_cardinal(degrees):
         return "NW"
     return degrees
 
+
 from datetime import datetime
 
 from dateutil import tz
 
+
 def utc_to_cst(utc_datetime):
 
-    cst_timezone = tz.gettz('US/Central')
+    cst_timezone = tz.gettz("US/Central")
 
-    cst_datetime = utc_datetime.astimezone(cst_timezone)
+    cst_datetime = utc_datetime.astimezone("cst_timezone")
 
     return cst_datetime

@@ -5,3 +5,4 @@ _.swp
 .pylintrc
 _.swo
 .nginx.conf
+_.pyc
