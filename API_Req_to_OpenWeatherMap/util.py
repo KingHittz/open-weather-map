@@ -1,5 +1,7 @@
 """unused utilities will be stored here"""
 
+from datetime import datetime, timezone, timedelta
+
 
 def convert_kelvin_to_celsius_fahrenheit(kelvin):
     """This function is designed to convert a
@@ -55,35 +57,31 @@ def convert_mph_to_kph(value):
 
 def degrees_to_cardinal(degrees):
     """Converts degrees to cardinal direction"""
-
-    if degrees <= 0:
-        return "N"
-    elif 30 <= degrees <= 61:
-        return "NE"
-    elif 61 < degrees <= 120:
-        return "E"
-    elif 151 <= degrees <= 210:
-        return "S"
-    elif 120 < degrees <= 150:
-        return "SE"
-    elif 241 < degrees <= 300:
-        return "W"
-    elif 210 <= degrees <= 241:
-        return "SW"
-    elif 300 <= degrees <= 330:
-        return "NW"
-    return degrees
-
-
-from datetime import datetime
-
-from dateutil import tz
+    match degrees:
+        case degrees if 331 <= degrees <= 30:
+            return "N"
+        case degrees if 31 <= degrees <= 61:
+            return "NE"
+        case degrees if 62 <= degrees <= 120:
+            return "E"
+        case degrees if 151 <= degrees <= 210:
+            return "S"
+        case degrees if 121 <= degrees <= 150:
+            return "SE"
+        case degrees if 241 <= degrees <= 300:
+            return "W"
+        case degrees if 211 <= degrees <= 240:
+            return "SW"
+        case degrees if 301 <= degrees <= 330:
+            return "NW"
+        case _:
+            return degrees
 
 
-def utc_to_cst(utc_datetime):
-
-    cst_timezone = tz.gettz("US/Central")
-
-    cst_datetime = utc_datetime.astimezone("cst_timezone")
-
-    return cst_datetime
+# def convert_utc_to_cst():
+#     """converts utc to cst"""
+#     utc_time = datetime.now(timezone.utc)
+#
+#     cst_timezone = timezone(timedelta(hours=-6))
+#
+#     cst_time = utc_time.astimezone(cst_timezone)
