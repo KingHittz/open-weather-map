@@ -27,7 +27,7 @@ jobs:
           pip install -r API_Req_to_OpenWeatherMap/requirements.txt
       - name: Analysing the code with pylint
         run: |
-          (pylint $(git ls-files '*.py') --fail-under 8) >> pylint-output.txt
+          pylint $(git ls-files '*.py') >> pylint-output.txt
       - uses: mshick/add-pr-comment@v2
         with:
           message-path: pylint-output.txt
