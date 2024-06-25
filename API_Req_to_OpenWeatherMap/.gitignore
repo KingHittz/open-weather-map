@@ -6,3 +6,9 @@ _.swp
 _.swo
 .nginx.conf
 _.pyc
+__pycache__/util.cpython-312.pyc
+__pycache__/util_test.cpython-312-pytest-8.2.1.
+__pycache__/util_test.cpython-312-pytest-8.2.2.pyc
+keys.py
+__pycache__/keys.cpython-312.pyc
+.env
