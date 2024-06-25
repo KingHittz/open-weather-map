@@ -1,76 +1,60 @@
-"""This Script is made to pull data from openweathermap"""
+"""Pulls data from open weather map"""
 
-import datetime
+from datetime import datetime
+import os
+from dotenv import load_dotenv
 import requests
 
+load_dotenv()
 
-# from util import convert_kelvin_to_celsius_fahrenheit
+
 class WeatherData:
-    """This is the blueprint for creating objects, attributes
-    and functionality aka methods"""
+    """This class represents weather data for a specific location."""
 
-    def __init__(self, api_key, city, state):
-        """This is a method which is called whenever you
-        create a new WeatherData object,
-        this also takes three arguments"""
-        self.api_key = api_key
-        self.city = city
-        self.state = state
+    def __init__(self, city_input, state_input):
+        """
+        This method initializes the WeatherData object.
+
+        Args:
+            api_key (str): Your OpenWeatherMap API key (likely stored in an environment variable)
+            city_input (str): The city name for which to retrieve weather data
+            state_input (str): The state name for the location (currently unused)
+        """
+        self.city = city_input
+        self.state = state_input
         self.base_url = "https://api.openweathermap.org/data/2.5/weather?"
+        self.api_key = os.getenv("API_KEY")
 
     def get_weather(self):
-        """This method is designed to retrieve weather data for the city
-        and state stored in the object"""
+        """
+        This method retrieves weather data for the location stored in the object.
+
+        Returns:
+            dict: A dictionary containing the extracted weather data
+        """
         url = f"{self.base_url}appid={self.api_key}&q={self.city}"
-        response = requests.get(url, timeout=10)
-        response.raise_for_status()
-        return self.pull_data(response.json())
-
-    def pull_data(self, data):
-        """This method exacts specific weather data from the provided JSON data"""
-        temp_kelvin = data["main"]["temp"]
-        feels_like_kelvin = data["main"]["feels_like"]
-        wind_speed = data["wind"]["speed"]
-        humidity = data["main"]["humidity"]
-        description = data["weather"][0]["description"]
-        sunrise_time = datetime.datetime.fromtimestamp(
-            data["sys"]["sunrise"] + data["timezone"]
-        )
-        sunset_time = datetime.datetime.fromtimestamp(
-            data["sys"]["sunset"] + data["timezone"]
-        )
-        return {
-            """This line makes a new dictionary containing
-            the extracted weather data,
-            then is returned by the method"""
-            "temp_kelvin": temp_kelvin,
-            "feels_like_kelvin": feels_like_kelvin,
-            "wind_speed": wind_speed,
-            "humidity": humidity,
-            "description": description,
-            "sunrise_time": sunrise_time,
-            "sunset_time": sunset_time,
+        response = requests.get(url, timeout=10).json()
+        owmdata = {
+            "temp_kelvin": response["main"]["temp"],
+            "feels_like_kelvin": response["main"]["feels_like"],
+            "wind_speed": response["wind"]["speed"],
+            "humidity": response["main"]["humidity"],
+            "description": response["weather"][0]["description"],
+            "sunrise_time": datetime.fromtimestamp(
+                response["sys"]["sunrise"] + response["timezone"]
+            ),
+            "sunset_time": datetime.fromtimestamp(
+                response["sys"]["sunset"] + response["timezone"]
+            ),
         }
+        return owmdata
 
 
-def main():
-<<<<<<< HEAD
-    api_key = 'b9f3269290ef5f9e7de33a3db53afbf6'  # Replace with your actual API key
-    city = 'Manchester'
-    state = 'Tennessee'
-
-=======
-    """This function runs the program"""
-    api_key = "b9f3269290ef5f9e7de33a3db53afbf6"  # Replace with your actual API key
-    city = "Manchester"
-    state = "Tennessee"
->>>>>>> b9a3a60cdc6c4b57711bdb14279828f275013f31
-    weather = WeatherData(api_key, city, state)
+if __name__ == "__main__":
+    CITY_INPUT = "Manchester"
+    STATE_INPUT = "Tennessee"
+    weather = WeatherData(CITY_INPUT, STATE_INPUT)
     data = weather.get_weather()
-    print(f'Sun rises in {city}, {state} at {data["sunrise_time"]}) local time.')
-    print(f'Sun sets in {city}, {state} at {data["sunset_time"]}) local time.')
-    print(f'Wind speed in {city}, {state}: {data["wind_speed"]} m/s')
-    # You can add similar print statements for other data points
-
-
-main()
+    print(f'Sun rises in {CITY_INPUT}, {STATE_INPUT} at {data["sunrise_time"]}')
+    print(f'Sun sets in {CITY_INPUT}, {STATE_INPUT} at {data["sunset_time"]}')
+    print(f'Wind speed in {CITY_INPUT}, {STATE_INPUT}: {data["wind_speed"]} m/s')

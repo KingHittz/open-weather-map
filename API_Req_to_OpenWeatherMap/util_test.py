@@ -2,7 +2,7 @@
 
 from util import convert_kelvin_to_celsius_fahrenheit
 
-from util import convert_speed_to_mps
+from util import convert_meter_to_mps
 
 from util import convert_kpa_to_psi
 
@@ -14,7 +14,9 @@ from util import convert_kpa_to_mmhg
 
 from util import convert_mph_to_kph
 
-from util import degrees_to_cardinal
+from util import convert_degrees_to_cardinal
+
+from util import convert_utc_to_cst
 
 
 def test_convert_kelvin_to_celsius_fahrenheit():
@@ -25,10 +27,10 @@ def test_convert_kelvin_to_celsius_fahrenheit():
     assert output == answer
 
 
-def test_convert_speed_to_mps():
+def test_convert_meter_to_mps():
     """used to test my function from util.py"""
 
-    output = convert_speed_to_mps(100)
+    output = convert_meter_to_mps(100)
     answer = 223.69400000000002
     assert output == answer
 
@@ -68,8 +70,15 @@ def test_convert_mph_to_kph():
     assert output == answer
 
 
-def test_degrees_to_cardinal():
+def test_convert_degrees_to_cardinal():
     """used to test my function from util.py"""
-    output = degrees_to_cardinal(190)
+    output = convert_degrees_to_cardinal(190)
     answer = "S"
     assert output == answer
+
+
+def test_convert_utc_to_cst():
+    """used to test my function from util.py"""
+    assert convert_utc_to_cst("2024-06-24 18:00:00") == "2024-06-24 12:00:00"
+    assert convert_utc_to_cst("2024-12-25 00:00:00") == "2024-12-24 18:00:00"
+    assert convert_utc_to_cst("2024-01-01 06:00:00") == "2024-01-01 00:00:00"

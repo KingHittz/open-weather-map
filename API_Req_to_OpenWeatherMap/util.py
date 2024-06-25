@@ -1,6 +1,6 @@
 """unused utilities will be stored here"""
 
-from datetime import datetime, timezone, timedelta
+from datetime import datetime, timedelta
 
 
 def convert_kelvin_to_celsius_fahrenheit(kelvin):
@@ -14,12 +14,10 @@ def convert_kelvin_to_celsius_fahrenheit(kelvin):
 # celsius, fahrenheit = weather.convert_kelvin_to_celsius_fahrenheit(data["temp_kelvin"])
 
 
-def convert_speed_to_mps(value, unit_from="m/s"):
+def convert_meter_to_mps(value, unit_from="m/s"):
     """Converts speed from meters
     per second to miles per hour"""
-
     conversion_factor = 2.23694
-
     if unit_from.upper() != "M/S":
         raise ValueError(f"Unsupported unit: {unit_from}")
     return value * conversion_factor
@@ -55,7 +53,7 @@ def convert_mph_to_kph(value):
     return kph
 
 
-def degrees_to_cardinal(degrees):
+def convert_degrees_to_cardinal(degrees):
     """Converts degrees to cardinal direction"""
     match degrees:
         case degrees if 331 <= degrees <= 30:
@@ -78,10 +76,8 @@ def degrees_to_cardinal(degrees):
             return degrees
 
 
-# def convert_utc_to_cst():
-#     """converts utc to cst"""
-#     utc_time = datetime.now(timezone.utc)
-#
-#     cst_timezone = timezone(timedelta(hours=-6))
-#
-#     cst_time = utc_time.astimezone(cst_timezone)
+def convert_utc_to_cst(utc_time_str):
+    """converts utc to cst"""
+    return (
+        datetime.strptime(utc_time_str, "%Y-%m-%d %H:%M:%S") - timedelta(hours=6)
+    ).strftime("%Y-%m-%d %H:%M:%S")

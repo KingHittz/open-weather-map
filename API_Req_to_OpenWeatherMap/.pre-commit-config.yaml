@@ -33,7 +33,7 @@ repos:
     hooks:
       - id: pylint
         name: run pylint
-        entry: python -m pylint
+        entry: python3 -m pylint
         language: system
         pass_filenames: false
         args: ["**/*.py", "--fail-under", "8"]
