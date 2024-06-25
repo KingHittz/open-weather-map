@@ -4,5 +4,5 @@ idna==3.7
 requests==2.31.0
 urllib3==2.2.1
 pre-commit
-python-dotenv~=1.0.1
 pylint
+python-dotenv~=1.0.1
